@@ -1,0 +1,35 @@
+published on https://medium.com/p/24de1f43b954
+
+New bank models and cash deposit
+John B
+John B
+Sep 23 · 2 min read
+For many, the so-called new banks (e.g. Revolut, N26, Monzo, etc) have disrupted the way we interact with our credit cards and daily small transactions (< 50 EUR): the transactions are reported on our mobile phone in real-time, we have much better control and visibility over our spendings, and if something were to go wrong, instead of waiting endlessly on the phone for somebody to answer, we simply open a chat with their support. This, on top of the free exchange rates, convenient ATM withdrawals, etc.
+This is great but, in my opinion, there’s one crucial functionality missing: cash deposit. While withdrawing money is extremely simple and most of the time free, there’s no way to deposit cash into these accounts. These banks have no ATM and probably no intention to ever have any.
+Cash deposit, per se, is not really an issue if it is in your home currency. Say you live in the United Kingdom and you have a spare 50GBP note, you can always deposit the cash at an incumbent bank (Lloyd’s, HSBC, etc) into your account (most of us still have at least one of these accounts) and if you wanted to have that cash available in your new bank account, you’d simply transfer it (for free) from the incumbent bank. Not hassle-free, but it works.
+What does not work, however, is the following. Imagine, you just ended a trip in Bali, where the local currency is the Indonesian Rupiah (INR). You are at the airport and you are left with the equivalent of 50EUR. Your flight is in two hours and you don’t plan to come back to Indonesia in a foreseeable future. You have two options: quickly spend the money or exchange it. Now the last option is VERY costly: they will charge a fixed and a variable fee (mostly hidden in the exchange spread), and they will not accept your coins. So, you will most likely fly back home with your spare cash promising yourself to be generous to the next person you know who will be spending some time in Indonesia.
+There is a better solution.
+When you get to the aiport you’d log into your “cash exchange” app and publish the cash amount that you have. Now, anybody who owns the app and is willing to take your cash (the buyer) can respond to your request. You meet, you show the buyer a QR code, you give the cash, you both confirm and the money is instantaneously transferred to your account. The buyer is rewarded with a little percentage of the transaction.
+Note that, unlike traditional exchange offices, the money is transferred directly to the person’s account in the local currency. In our example. you would hence get INR, that you can then exchange to any other currencies from within the app.
+WIP
+description of Revolut POC
+discussion about frauds and cheaters
+
+Using, Revolut unofficial API, I built a POC. The different steps are documented here below
+Step 1: authentication:
+The POC only works with Revolut but the idea is to have as many banks as possible listed. Even traditional bank and leverage open banking APIs
+Step2 - Create a request:
+you insert the amount of cash that you would like to "deposit". Your request is listed to all buyers that are in the vicinity
+Step3 - Your request is accepted
+A QR code is displayed on your phone and you will meet the buyer
+Step 4 - transaction initiation
+The buyer scans the QR Code. (at this point the money is provisioned on the buyer's side)
+Step 5 - cash handover
+the cash is given to the buyer and the buyer confirms on his app that the cash was received
+Step 6 - seller confirmation
+the seller confirms that the cash was given, the seller gets the money on his account minus a fee. The fee goes to the buyer and for the maintenance of the platform.
+
+Cheaters
+When money is involved, there are always people trying to game the system: let's look at the potential cases of fraud
+Case #1: the buyer is a cheater
+The buyer shows up but does not want to wire the money. The money is only wired once the seller and the buyer confirms that the cash was given. So, in this case, the seller will reject the transaction
